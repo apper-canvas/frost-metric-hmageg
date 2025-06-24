@@ -1,8 +1,26 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import DashboardStats from '@/components/organisms/DashboardStats';
 import RecentActivity from '@/components/organisms/RecentActivity';
-
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+  const handleAddContact = () => {
+    navigate('/contacts', { state: { action: 'create' } });
+    toast.success('Navigating to create new contact');
+  };
+
+  const handleCreateDeal = () => {
+    navigate('/pipeline', { state: { action: 'create' } });
+    toast.success('Navigating to create new deal');
+  };
+
+  const handleAddTask = () => {
+    navigate('/tasks', { state: { action: 'create' } });
+    toast.success('Navigating to create new task');
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -39,7 +57,10 @@ const Dashboard = () => {
               Get started with common CRM tasks
             </p>
             <div className="space-y-2">
-              <button className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-lg p-3 text-left transition-colors">
+<button 
+                onClick={handleAddContact}
+                className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-lg p-3 text-left transition-colors"
+              >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
                     <span className="text-sm">👤</span>
@@ -47,7 +68,10 @@ const Dashboard = () => {
                   <span className="font-medium">Add New Contact</span>
                 </div>
               </button>
-              <button className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-lg p-3 text-left transition-colors">
+<button 
+                onClick={handleCreateDeal}
+                className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-lg p-3 text-left transition-colors"
+              >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
                     <span className="text-sm">💼</span>
@@ -55,7 +79,10 @@ const Dashboard = () => {
                   <span className="font-medium">Create Deal</span>
                 </div>
               </button>
-              <button className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-lg p-3 text-left transition-colors">
+<button 
+                onClick={handleAddTask}
+                className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-lg p-3 text-left transition-colors"
+              >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
                     <span className="text-sm">✅</span>
